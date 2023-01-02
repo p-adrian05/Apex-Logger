@@ -1,19 +1,21 @@
 {
-    "packageDirectories": [
-        {
-            "path": "force-app",
-            "default": true,
-            "package": "Apex Logger",
-            "versionName": "ver 0.1",
-            "versionNumber": "0.1.0.NEXT"
-        }
-    ],
-    "name": "ApexLogger",
-    "namespace": "",
-    "sfdcLoginUrl": "https://login.salesforce.com",
-    "sourceApiVersion": "55.0",
-    "packageAliases": {
-        "Apex Logger": "0Ho7Q000000XZU2SAO",
-        "Apex Logger@0.1.0-1": "04t7Q000000Yw2UQAS"
+  "packageDirectories": [
+    {
+      "path": "force-app",
+      "default": true,
+      "package": "Apex Logger",
+      "versionName": "ver 1.0",
+      "versionNumber": "1.0.0.NEXT"
     }
+  ],
+  "name": "ApexLogger",
+  "namespace": "",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "55.0",
+  "packageAliases": {
+    "Apex Logger": "0Ho7Q000000XZU2SAO",
+    "Apex Logger@0.1.0-1": "04t7Q000000Yw2UQAS",
+    "Apex Logger@1.0.0-1": "04t7Q000000YxnUQAS",
+    "Apex Logger@1.0.0-2": "04t7Q000000YxnZQAS"
+  }
 }
