@@ -2,7 +2,7 @@
 
 Provides a flexible and extensible Logger class with parameterized logging.
 
-<a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t7Q000000YxnZQAS">
+<a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t7Q000000YxnoQAC">
 <img alt="Deploy to Salesforce"
 src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
 </a>
