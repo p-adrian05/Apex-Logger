@@ -22,7 +22,7 @@ public with sharing class LoggerTest {
     private static final List<Object> objectList1 = new List<Object>{'Str'};
     private static final List<Object> objectList2 = new List<Object>{'Str',12};
     private static final List<Object> objectList3 = new List<Object>{'Str',12,new List<Integer>{1,2}};
-    private static final List<Object> objectList5 = new List<Object>{'Str',12,new List<Integer>{1,2},Datetime.newInstance(2021,12,6),122323.3};
+    private static final List<Object> objectList4 = new List<Object>{Datetime.newInstance(2021,12,6),'Str',12,new List<Integer>{1,2}};
 
     //Test debug Str message
     private static final String mergedMessageOneArg = messageW1W2+ ' '+objectList1.get(0)+' '+messageW3;
@@ -31,7 +31,7 @@ public with sharing class LoggerTest {
    //Test debug Str message 12, (1, 2)
     private static final String mergedMessageThreeArgs = mergedMessageTwoArgs+', '+objectList3.get(2);
     //2021-12-05 23:00:00 Test debug Str message 12, (1, 2)
-    private static final String mergedMessageFourArgs = objectList5.get(3) + ' ' + mergedMessageThreeArgs;
+    private static final String mergedMessageFourArgs = objectList4.get(0) + ' ' + mergedMessageThreeArgs;
 
     //Test debug Str message 12, Str
     private static final String mergedMessageThreeArgsWithTwoObjs = mergedMessageTwoArgs+', '+objectList2.get(0);
@@ -46,7 +46,7 @@ public with sharing class LoggerTest {
     }
     @IsTest
     public static void testMergeObjectsToStringWithMessageAndNullListShouldReturnMessage(){
-        Logger logger = new Logger();
+       Logger logger = new Logger();
 
        String result =  logger.mergeObjectsToString(message,null);
 
@@ -54,7 +54,7 @@ public with sharing class LoggerTest {
     }
     @IsTest
     public static void testMergeObjectsToStringWithOneArgMessageAndOneObjectListShouldReturnMessage(){
-        Logger logger = new Logger();
+       Logger logger = new Logger();
 
        String result = logger.mergeObjectsToString(messageWithOneArg,objectList1);
 
@@ -62,7 +62,7 @@ public with sharing class LoggerTest {
     }
     @IsTest
     public static void testMergeObjectsToStringWithTwoArgMessageAndTwoObjectListShouldReturnMessage(){
-        Logger logger = new Logger();
+       Logger logger = new Logger();
 
        String result = logger.mergeObjectsToString(messageWithTwoArgs,objectList2);
 
@@ -70,7 +70,7 @@ public with sharing class LoggerTest {
     }
     @IsTest
     public static void testMergeObjectsToStringWithThreeArgMessageAndThreeObjectListShouldReturnMessage(){
-        Logger logger = new Logger();
+       Logger logger = new Logger();
 
        String result = logger.mergeObjectsToString(messageWithThreeArgs,objectList3);
 
@@ -78,7 +78,7 @@ public with sharing class LoggerTest {
     }
     @IsTest
     public static void testMergeObjectsToStringWithThreeArgMessageAndTwoObjectListShouldReturnMessage(){
-        Logger logger = new Logger();
+       Logger logger = new Logger();
 
        String result = logger.mergeObjectsToString(messageWithThreeArgs,objectList2);
 
@@ -86,10 +86,20 @@ public with sharing class LoggerTest {
     }
     @IsTest
     public static void testMergeObjectsToStringWithTwoArgMessageAndThreeObjectListShouldReturnMessage(){
-        Logger logger = new Logger();
+       Logger logger = new Logger();
        String result = logger.mergeObjectsToString(messageWithTwoArgs,objectList3);
+        System.debug(result);
+        System.debug(mergedMessageTwoArgs);
 
        System.assertEquals(mergedMessageTwoArgs,result);
+    }
+    @IsTest
+    public static void testMergeObjectsToStringWithFourArgMessageAndFourObjectListShouldReturnMessage(){
+        Logger logger = new Logger();
+
+        String result = logger.mergeObjectsToString(messageWithFourArgs,objectList4);
+
+        System.assertEquals(mergedMessageFourArgs,result);
     }
     @IsTest
     public static void testDebugLogs(){

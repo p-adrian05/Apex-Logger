@@ -34,26 +34,34 @@ public with sharing virtual class Logger {
     protected virtual void logMessage(String message, List<Object> objects,System.LoggingLevel level){
         System.debug(level,mergeObjectsToString(message, objects));
     }
-
     @TestVisible
     protected String mergeObjectsToString(String message, List<Object> objects){
         if(objects == null || objects.size() == 0){
             return message;
         }
-        String result = '';
-        Integer index = 0;
-        for(Integer i=0, j=message.length(); i < j; i++){
-            if(message.charAt(i) == 123 && message.charAt(i+1) == 125 ){
+        Boolean messageEndsWithAnchor = false;
+        if(message.endsWith('{}')){
+            message+= ' ';
+            messageEndsWithAnchor = true;
+        }
 
-                result += objects.get(index);
-                if(index == objects.size()-1){
-                    index = 0;
-                }else{
-                    index++;
-                }
-                i++;
-            }else {
-                result+= message.substring(i,i+1);
+        List<String> messageList = message.split('\\{}');
+        String result = '';
+        Integer objectIndex = 0;
+
+        for(Integer i=0, j=messageList.size(); i < j; i++){
+            if(!(messageEndsWithAnchor && i == messageList.size()-1)){
+                result += messageList.get(i);
+            }
+
+            if(i != messageList.size()-1){
+                result+= objects.get(objectIndex);
+            }
+
+            if(objectIndex == objects.size()-1){
+                objectIndex = 0;
+            }else{
+                objectIndex++;
             }
         }
         return result;
