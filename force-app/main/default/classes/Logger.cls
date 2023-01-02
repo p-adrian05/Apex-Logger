@@ -36,7 +36,7 @@ public with sharing virtual class Logger {
     }
     @TestVisible
     protected String mergeObjectsToString(String message, List<Object> objects){
-        if(objects == null || objects.size() == 0){
+        if(message == null || objects == null || objects.size() == 0){
             return message;
         }
         Boolean messageEndsWithAnchor = false;
@@ -53,11 +53,9 @@ public with sharing virtual class Logger {
             if(!(messageEndsWithAnchor && i == messageList.size()-1)){
                 result += messageList.get(i);
             }
-
             if(i != messageList.size()-1){
-                result+= objects.get(objectIndex);
+                result += objects.get(objectIndex);
             }
-
             if(objectIndex == objects.size()-1){
                 objectIndex = 0;
             }else{

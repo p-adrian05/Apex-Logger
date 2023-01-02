@@ -88,8 +88,6 @@ public with sharing class LoggerTest {
     public static void testMergeObjectsToStringWithTwoArgMessageAndThreeObjectListShouldReturnMessage(){
        Logger logger = new Logger();
        String result = logger.mergeObjectsToString(messageWithTwoArgs,objectList3);
-        System.debug(result);
-        System.debug(mergedMessageTwoArgs);
 
        System.assertEquals(mergedMessageTwoArgs,result);
     }
