@@ -34,9 +34,11 @@ logger.debug('Test {} debug {} message {}, {} ',new List<Object>{Datetime.newIns
 //|DEBUG|Test 2021-12-06 00:00:00 debug Str message 12, {1=one, 2=two}
 ```
 ### Argument validation using ObjectUtil class
-Provides basic object validation methods currently ***requireNonNull(Object obj, String message)*** and ***requireNonEmpty(List<Object> objs, String message)***.
-
 Early argument validation using fail fast principle is a software design pattern that emphasizes the importance of validating input arguments early in the execution process and immediately stopping execution and throwing an exception when invalid arguments are detected. This can help to prevent errors and improve the robustness and reliability of the code.
+
+ObjectUtil class provides basic object validation methods currently **requireNonNull(Object obj, String message)** and **requireNonEmpty(List<Object> objs, String message)**.
+
+
 
 
 ```Apex
