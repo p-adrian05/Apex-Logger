@@ -78,8 +78,9 @@ public with sharing class LoggerTest {
     public static void testMergeArgsToStringWithFourArgMessageAndFourObjectListShouldReturnMessage(){
         LoggerImpl logger = new LoggerImpl();
         String stringToLog = '{0} Test debug {1} message {2}, {3}';
-        List<Object> objectList = new List<Object>{Datetime.newInstance(2021,12,6),'Str',12,new List<Integer>{1,2}};
-        String expected = '2021-12-06 00:00:00 Test debug Str message 12, (1, 2)';
+        List<Object> objectList = new List<Object>{Date.newInstance(2023,03,04),
+                                        'Str',12,new List<Integer>{1,2}};
+        String expected = '2023-03-04 00:00:00 Test debug Str message 12, (1, 2)';
 
         String result = logger.mergeArgsToString(stringToLog,objectList);
 
