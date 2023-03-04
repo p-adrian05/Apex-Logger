@@ -1,67 +1,77 @@
-public with sharing virtual class Logger {
+/**
+ * Logs debug, info and error messages to the console with parameters to be merged into the given stringFormat.
+ * Example: logger.debug('Test {0} debug', 'paramString'); // Test paramString debug
+ */
+public interface Logger {
+    /**
+    Logs a debug level message with the given string.
+    @param stringToLog The string to log.
+    */
+    void debug(String stringToLog);
+   /**
+    Logs a debug level message with the given string to format and one argument.
+    The stringToFormat parameter should be in the format of 'Test {0} debug'
+    where the {0} placeholder for the argument to be inserted.
 
-    private final System.LoggingLevel DEBUG_LEVEL = LoggingLevel.DEBUG;
-    private final System.LoggingLevel ERROR_LEVEL = LoggingLevel.ERROR;
-    private final System.LoggingLevel INFO_LEVEL = LoggingLevel.INFO;
+    @param stringToLog The string to log with the argument.
+    @param argument The argument to merge into the string.
+    */
+    void debug(String stringToLog, Object argument);
+    /**
+      Logs a debug level message with the given string to format and multiple arguments.
+      The stringToFormat parameter should be in the format of 'Test {0} debug {1}'
+      where the {0} and {1} are placeholders for the arguments to be inserted.
 
-    public void debug(String message){
-        logMessage(message, null, DEBUG_LEVEL);
-    }
-    public void debug(String message, Object obj){
-        logMessage(message, new List<Object>{obj}, DEBUG_LEVEL);
-    }
-    public void debug(String message, List<Object> objects){
-        logMessage(message, objects, DEBUG_LEVEL);
-    }
-    public void error(String message){
-        logMessage(message, null, ERROR_LEVEL);
-    }
-    public void error(String message, Object obj){
-        logMessage(message, new List<Object>{obj}, ERROR_LEVEL);
-    }
-    public void error(String message, List<Object> objects){
-        logMessage(message, objects, ERROR_LEVEL);
-    }
-    public void info(String message){
-        logMessage(message, null, INFO_LEVEL);
-    }
-    public void info(String message, Object obj){
-        logMessage(message, new List<Object>{obj}, INFO_LEVEL);
-    }
-    public void info(String message, List<Object> objects){
-        logMessage(message, objects, INFO_LEVEL);
-    }
-    protected virtual void logMessage(String message, List<Object> objects,System.LoggingLevel level){
-        System.debug(level,mergeObjectsToString(message, objects));
-    }
-    @TestVisible
-    protected String mergeObjectsToString(String message, List<Object> objects){
-        if(message == null || objects == null || objects.size() == 0){
-            return message;
-        }
-        Boolean messageEndsWithAnchor = false;
-        if(message.endsWith('{}')){
-            message+= ' ';
-            messageEndsWithAnchor = true;
-        }
+      @param stringToLog The string to log with the arguments.
+      @param arguments The list of arguments to merge into the string.
+    */
+    void debug(String stringToLog, List<Object> arguments);
+    /**
+        Logs an error level message with the given string.
+        @param stringToLog The string to log.
+    */
+    void error(String stringToLog);
+    /**
+       Logs an error level message with the given string to format and one argument.
+       The stringToFormat parameter should be in the format of 'Test {0} debug'
+       where the {0} placeholder for the argument to be inserted.
 
-        List<String> messageList = message.split('\\{}');
-        String result = '';
-        Integer objectIndex = 0;
+       @param stringToLog The string to log with the argument.
+       @param argument The argument to merge into the string.
+    */
+    void error(String stringToLog, Object argument);
+    /**
+      Logs an error level message with the given string to format and multiple arguments.
+      The stringToFormat parameter should be in the format of 'Test {0} debug {1}'
+      where the {0} and {1} are placeholders for the arguments to be inserted.
 
-        for(Integer i=0, j=messageList.size(); i < j; i++){
-            if(!(messageEndsWithAnchor && i == messageList.size()-1)){
-                result += messageList.get(i);
-            }
-            if(i != messageList.size()-1){
-                result += objects.get(objectIndex);
-            }
-            if(objectIndex == objects.size()-1){
-                objectIndex = 0;
-            }else{
-                objectIndex++;
-            }
-        }
-        return result;
-    }
+      @param stringToLog The string to log with the arguments.
+      @param arguments The list of arguments to merge into the string.
+    */
+    void error(String stringToLog, List<Object> arguments);
+    /**
+       Logs an info level message with the given string.
+       @param stringToLog The string to log.
+   */
+    void info(String stringToLog);
+    /**
+    Logs an info level message with the given string to format and one argument.
+    The stringToFormat parameter should be in the format of 'Test {0} debug'
+    where the {0} placeholder for the argument to be inserted.
+
+    @param stringToLog The string to log with the argument.
+    @param argument The argument to merge into the string.
+
+    */
+    void info(String stringToLog, Object argument);
+    /**
+     Logs an info  level message with the given string to format and multiple arguments.
+     The stringToFormat parameter should be in the format of 'Test {0} debug {1}'
+     where the {0} and {1} are placeholders for the arguments to be inserted.
+
+     @param stringToLog The string to log with the arguments.
+     @param arguments The list of arguments to merge into the string.
+   */
+    void info(String stringToLog, List<Object> arguments);
+
 }
