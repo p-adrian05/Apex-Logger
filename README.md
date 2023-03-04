@@ -7,6 +7,10 @@ Provides a flexible and extensible Logger class with parameterized logging.
 src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
 </a>
 
+This logger with parameterized logging is a logging utility that allows for the insertion of dynamic values, known as parameters, into log messages at runtime. This allows for more detailed and informative log messages, as the values of variables or the state of the system can be included in the log.
+
+This feature is useful for debugging and troubleshooting by providing more detailed and informative log messages and also it helps developers to track their application by providing more data in the logs.
+
 ### Logger class
 The "{}" pair is called the formatting anchor. It serves to designate the 
 location where arguments need to be substituted within the message pattern.
@@ -35,7 +39,12 @@ logger.debug('Test {0} debug {1} message {2}, {3} ', new List<Object>{
 //|DEBUG|Test 2021-12-06 00:00:00 debug Str message 12, {1=one, 2=two}
 ```
 ### Argument validation using ObjectUtil class
-Provides basic object validation methods currently ***requireNonNull(Object obj, String message)*** and ***requireNonEmpty(List<Object> objs, String message)***.
+Early argument validation using fail fast principle is a software design pattern that emphasizes the importance of validating input arguments early in the execution process and immediately stopping execution and throwing an exception when invalid arguments are detected. This can help to prevent errors and improve the robustness and reliability of the code.
+
+ObjectUtil class provides basic object validation methods currently **requireNonNull(Object obj, String message)** and **requireNonEmpty(List<Object> objs, String message)**.
+
+
+
 
 ```Apex
     public String method(List<Id> recordIds, String logId) {
