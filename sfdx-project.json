@@ -4,8 +4,8 @@
       "path": "force-app",
       "default": true,
       "package": "Apex Logger",
-      "versionName": "ver 1.0",
-      "versionNumber": "1.0.0.NEXT"
+      "versionName": "ver 2.0",
+      "versionNumber": "2.0.0.NEXT"
     }
   ],
   "name": "ApexLogger",
@@ -17,6 +17,7 @@
     "Apex Logger@0.1.0-1": "04t7Q000000Yw2UQAS",
     "Apex Logger@1.0.0-1": "04t7Q000000YxnUQAS",
     "Apex Logger@1.0.0-2": "04t7Q000000YxnZQAS",
-    "Apex Logger@1.0.0-3": "04t7Q000000YxnoQAC"
+    "Apex Logger@1.0.0-3": "04t7Q000000YxnoQAC",
+    "Apex Logger@2.0.0-1": "04t7Q000000YyjaQAC"
   }
 }
